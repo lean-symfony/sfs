@@ -1,0 +1,58 @@
+
+.header h1, .header h2 {
+    text-transform: uppercase;
+}
+
+.error {
+    padding: 1em 0;
+    color: #e1332b;
+}
+
+.sidebar {
+    background-color: #1e332b;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+}
+
+    .sidebar .header {
+        text-align: right;
+        margin: 0 2em;
+    }
+
+.content {
+    padding: 2em 1em 0;
+}
+    .content h2 {
+        color: #5e736b;
+        margin-bottom: 0;
+    }
+    section {
+        margin-top: 2em;
+    }
+    .pure-form > * {
+        margin: 0 0.5em;
+    }
+    .welcome {
+        font-size: 1.2em;
+    }
+
+    @media screen and (max-width: 799px) {
+        .break-on-sm {
+            display: block;
+        }
+    }
+
+    @media screen and (min-width: 800px) {
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+        }
+        .content {
+            margin-left: 25%;
+            padding: 2em 3em 0;
+        }
+    }
