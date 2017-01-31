@@ -9,5 +9,7 @@
             "email": "symfony@lean-stack.de"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/http-foundation": "^3.2"
+    }
 }
