@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['name']) && strlen($_POST['name']) > 0) {
         $posted = true;
-        $name = htmlentities($_POST['name']);
+        $name = $_POST['name'];
     } else {
         $error = 'Ohne deinen Namen geht es hier nicht weiter ...';
     }
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
                 <?php if ($error): ?><div class="error"><?= $error ?></div><?php endif; ?>
             <?php else: ?>
-                <div class="welcome">Herzlich Willkommen, <span class="break-on-sm">liebe/r <?= $name ?>!</span></div>
+                <div class="welcome">Herzlich Willkommen, <span class="break-on-sm">liebe/r <?= htmlentities($name) ?>!</span></div>
             <?php endif; ?>
             </section>
         </div>
