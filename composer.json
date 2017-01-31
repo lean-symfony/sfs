@@ -1,0 +1,13 @@
+{
+    "name": "lean-symfony/sfs",
+    "description": "Symfony from Scratch",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Micha Alt",
+            "email": "symfony@lean-stack.de"
+        }
+    ],
+    "require": {}
+}

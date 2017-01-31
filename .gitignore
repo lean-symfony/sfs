@@ -1,3 +1,5 @@
+# Composer dependencies
+/vendor/
+ 
 # IDE/Editor settings
 /.idea/
-
