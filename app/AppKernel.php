@@ -16,6 +16,17 @@ class AppKernel extends \Symfony\Component\HttpKernel\Kernel
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function handle(\Symfony\Component\HttpFoundation\Request $request, $type = \Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST, $catch = true)
+    {
+        $request->attributes->add(['_controller' => \AppBundle\Controller\DefaultController::class . '::indexAction']);
+
+        return parent::handle($request, $type, $catch);
+    }
+
+
+    /**
      * Loads the container configuration.
      *
      * @param \Symfony\Component\Config\Loader\LoaderInterface $loader A LoaderInterface instance
