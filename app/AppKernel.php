@@ -13,6 +13,7 @@ class AppKernel extends \Symfony\Component\HttpKernel\Kernel
     public function registerBundles()
     {
         return [
+            new \LeanSymfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \AppBundle\AppBundle()
         ];
     }
