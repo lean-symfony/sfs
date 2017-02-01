@@ -12,11 +12,16 @@
     "autoload": {
         "psr-4": {
             "": "src/"
-        }
+        },
+        "classmap": [
+            "app/AppKernel.php"
+        ]
     },
     "require": {
         "symfony/http-foundation": "^3.2",
         "symfony/http-kernel": "^3.2",
-        "monolog/monolog": "^1.22"
+        "monolog/monolog": "^1.22",
+        "symfony/config": "^3.2",
+        "symfony/dependency-injection": "^3.2"
     }
 }

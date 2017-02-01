@@ -13,7 +13,12 @@ $log->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
 // Create a plain HttpKernel
 $dispatcher = new \LeanSymfony\Component\EventDispatcher\EventDispatcher($log);
 $resolver = new \Symfony\Component\HttpKernel\Controller\ControllerResolver($log);
-$kernel = new \Symfony\Component\HttpKernel\HttpKernel($dispatcher,$resolver);
+$httpKernel = new \Symfony\Component\HttpKernel\HttpKernel($dispatcher,$resolver);
+
+// And the Application Kernel with a registered http_kernel service
+$kernel = new AppKernel('dev', true);
+$kernel->boot();    // build the container
+$kernel->getContainer()->set('http_kernel', $httpKernel);
 
 $request =  \Symfony\Component\HttpFoundation\Request::createFromGlobals();
 
