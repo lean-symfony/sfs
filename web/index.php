@@ -3,29 +3,9 @@
 // Composer autoloader
 require '../vendor/autoload.php';
 
-// Request and Response abstraction
+$request =  \Symfony\Component\HttpFoundation\Request::createFromGlobals();
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+$ctrl = new \AppBundle\Controller\DefaultController();
+$response = $ctrl->indexAction($request);
 
-$request = Request::createFromGlobals();
-
-$error = '';
-$posted = false;
-
-if ($request->getMethod() === 'POST') {
-
-    $name = $request->get('name','');
-
-    if (strlen($name) > 0) {
-        $posted = true;
-    } else {
-        $error = 'Ohne deinen Namen geht es hier nicht weiter ...';
-    }
-}
-
-$template = file_get_contents('../app/Resources/views/index.html.php');
-$content = eval("?>$template");
-
-$response = new Response($content);
-echo $response;
+$response->send();
