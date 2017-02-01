@@ -24,8 +24,10 @@ if ($request->getMethod() === 'POST') {
     }
 }
 
-$template = file_get_contents('../app/Resources/views/index.html.php');
-$content = eval("?>$template");
+ob_start();
+require '../app/Resources/views/index.html.php';
+$content = ob_get_clean();
 
 $response = new Response($content);
-echo $response;
+$response->send();
+
