@@ -9,6 +9,11 @@
             "email": "symfony@lean-stack.de"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
     "require": {
         "symfony/http-foundation": "^3.2"
     }
