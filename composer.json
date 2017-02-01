@@ -16,6 +16,7 @@
     },
     "require": {
         "symfony/http-foundation": "^3.2",
-        "symfony/http-kernel": "^3.2"
+        "symfony/http-kernel": "^3.2",
+        "monolog/monolog": "^1.22"
     }
 }

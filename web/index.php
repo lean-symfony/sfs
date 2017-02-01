@@ -6,9 +6,13 @@ require '../vendor/autoload.php';
 // Enable debugging infos
 \Symfony\Component\Debug\Debug::enable();
 
+// Create a logger
+$log = new \Monolog\Logger('Lean Symfony');
+$log->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
+
 // Create a plain HttpKernel
-$dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
-$resolver = new \Symfony\Component\HttpKernel\Controller\ControllerResolver();
+$dispatcher = new \LeanSymfony\Component\EventDispatcher\EventDispatcher($log);
+$resolver = new \Symfony\Component\HttpKernel\Controller\ControllerResolver($log);
 $kernel = new \Symfony\Component\HttpKernel\HttpKernel($dispatcher,$resolver);
 
 $request =  \Symfony\Component\HttpFoundation\Request::createFromGlobals();
