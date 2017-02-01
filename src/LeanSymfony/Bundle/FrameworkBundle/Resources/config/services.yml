@@ -1,1 +1,34 @@
-# Lean Symfony Framework Services
+services:
+
+  # Required Symfony Services
+  http_kernel:
+    class: Symfony\Component\HttpKernel\HttpKernel
+    arguments:
+      - '@lean.event_dispatcher'
+      - '@lean.controller_resolver'
+      - '@lean.request_stack'
+      - '@lean.argument_resolver'
+
+  # Lean Symfony Framework Services
+  lean.logger.console_handler:
+    class: Monolog\Handler\BrowserConsoleHandler
+
+  lean.logger:
+    class: Monolog\Logger
+    arguments: ['Lean Symfony']
+    calls:
+      - [pushHandler, ['@lean.logger.console_handler']]
+
+  lean.event_dispatcher:
+    class: LeanSymfony\Component\EventDispatcher\EventDispatcher
+    arguments: ['@lean.logger']
+
+  lean.controller_resolver:
+    class: Symfony\Component\HttpKernel\Controller\ControllerResolver
+    arguments: ['@lean.logger']
+
+  lean.request_stack:
+    class: Symfony\Component\HttpFoundation\RequestStack
+
+  lean.argument_resolver:
+    class: Symfony\Component\HttpKernel\Controller\ArgumentResolver
