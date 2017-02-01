@@ -12,7 +12,9 @@ class AppKernel extends \Symfony\Component\HttpKernel\Kernel
      */
     public function registerBundles()
     {
-        return [];
+        return [
+            new \AppBundle\AppBundle()
+        ];
     }
 
     /**
@@ -40,17 +42,17 @@ class AppKernel extends \Symfony\Component\HttpKernel\Kernel
 
             $loggerDefinition = new Definition(\Monolog\Logger::class, ['Lean Symfony']);
             $loggerDefinition->addMethodCall('pushHandler', [new Reference('app.logger.console_handler')]);
-            $c->setDefinition('app.logger', $loggerDefinition);
+            $c->setDefinition('app.kernel.logger', $loggerDefinition);
 
             $c->setDefinition('app.event_dispatcher',
                 new Definition(\LeanSymfony\Component\EventDispatcher\EventDispatcher::class, [
-                    new Reference('app.logger')
+                    new Reference('app.kernel.logger')
                 ])
             );
 
             $c->setDefinition('app.controller_resolver',
                 new Definition(\Symfony\Component\HttpKernel\Controller\ControllerResolver::class, [
-                    new Reference('app.logger')
+                    new Reference('app.kernel.logger')
                 ])
             );
 
