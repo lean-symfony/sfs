@@ -64,3 +64,11 @@ services:
   templating.loader:
     class: Symfony\Component\Templating\Loader\FilesystemLoader
     arguments: [['%kernel.root_dir%/Resources/views/%%name%%']]
+
+  # Routing related services
+  lean.router:
+    class: Symfony\Component\Routing\Router
+  lean.routing_subscriber:
+    class: LeanSymfony\Bundle\FrameworkBundle\EventListener\RouterListener
+    tags:
+        - { name: kernel.event_subscriber }
