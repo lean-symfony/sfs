@@ -25,7 +25,7 @@ class AppKernel extends \Symfony\Component\HttpKernel\Kernel
      */
     public function handle(\Symfony\Component\HttpFoundation\Request $request, $type = \Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST, $catch = true)
     {
-        $request->attributes->add(['_controller' => \AppBundle\Controller\DefaultController::class . '::indexAction']);
+        $request->attributes->add(['_controller' => \AppBundle\Controller\DefaultController::class . ':indexAction']);
 
         return parent::handle($request, $type, $catch);
     }
