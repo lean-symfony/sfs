@@ -47,7 +47,7 @@ class DefaultController
             }
         }
 
-        return $this->view->response('index.html.php', [
+        return $this->view->response('default/index.html.twig', [
             'posted' => $posted,
             'error' => $error,
             'name' => $name

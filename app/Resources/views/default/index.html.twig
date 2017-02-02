@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="header">
+        <h2>Symfony sagt Hallo</h2>
+        <hr>
+    </div>
+    <section>
+        {% if not posted %}
+            <form class="pure-form" method="post">
+                <label for="name">Wer bist du?</label>
+                <input id="name" name="name" type="text" placeholder="Dein Vorname" autofocus>
+                <button type="submit" class="pure-button pure-button-primary">Sag es uns</button>
+            </form>
+            {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        {% else %}
+            <div class="welcome">Herzlich Willkommen, <span class="break-on-sm">liebe/r {{ name }}!</span></div>
+        {% endif %}
+    </section>
+{% endblock %}

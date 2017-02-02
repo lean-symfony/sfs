@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Symfony from Scratch</title>
+
+    <link rel="stylesheet" href="/css/pure.css">
+    <link rel="stylesheet" href="/css/medium-grid.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="layout pure-g">
+    <div class="sidebar pure-u-1 pure-u-med-1-4">
+        <div class="header">
+            <h1>Symfony from Scratch</h1>
+        </div>
+    </div>
+    <div class="content pure-u-1 pure-u-med-3-4">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>

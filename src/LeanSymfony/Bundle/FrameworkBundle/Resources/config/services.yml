@@ -12,7 +12,7 @@ services:
   # Standard Symfony Services
   templating:
     class: LeanSymfony\Bundle\FrameworkBundle\Templating\TemplateEngine
-    arguments: [['@templating.engine.php']]
+    arguments: [['@templating.engine.php','@templating.engine.twig']]
 
   # Lean Symfony Framework Services
   lean.container_factory:
@@ -47,9 +47,18 @@ services:
     class: Symfony\Component\HttpKernel\Controller\ArgumentResolver
 
   # Templating related services
+  twig:
+    class: Twig_Environment
+    arguments: ['@twig.loader']
+  twig.loader:
+    class: Twig_Loader_Filesystem
+    arguments: ['%kernel.root_dir%/Resources/views']
   templating.engine.php:
     class: Symfony\Component\Templating\PhpEngine
     arguments: ['@templating.name_parser','@templating.loader']
+  templating.engine.twig:
+    class: LeanSymfony\Bundle\FrameworkBundle\Templating\TwigEngine
+    arguments: ['@twig','@templating.name_parser']
   templating.name_parser:
     class: Symfony\Component\Templating\TemplateNameParser
   templating.loader:
