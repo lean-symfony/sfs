@@ -10,6 +10,7 @@ class DIContainerFactory
     public static function createDIContainer()
     {
         $builder = new \DI\ContainerBuilder();
+        $builder->useAnnotations(true);
         $container = $builder->build();
 
         return $container;
