@@ -6,8 +6,17 @@ namespace AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Psr\Log\LoggerInterface;
+
 class DefaultController
 {
+    /**
+     * @var LoggerInterface
+     * @Inject("lean.logger")
+     *
+     */
+    private $log;
+
     /**
      * @param Request $request
      *
@@ -15,6 +24,8 @@ class DefaultController
      */
     public function indexAction(Request $request)
     {
+        $this->log->notice('Default:index action');
+        
         $error = '';
         $posted = false;
 

@@ -16,6 +16,7 @@ services:
   lean.container:
       class:   DI\Container
       factory: 'lean.container_factory:createDIContainer'
+      arguments: ['@service_container']
 
   lean.logger.console_handler:
     class: Monolog\Handler\BrowserConsoleHandler
