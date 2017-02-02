@@ -7,15 +7,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Psr\Log\LoggerInterface;
+use LeanSymfony\Bundle\FrameworkBundle\Templating\TemplateEngine;
 
 class DefaultController
 {
     /**
      * @var LoggerInterface
      * @Inject("lean.logger")
-     *
      */
     private $log;
+
+    /**
+     * @var TemplateEngine
+     * @Inject("templating")
+     */
+    private $view;
 
     /**
      * @param Request $request
@@ -25,9 +31,10 @@ class DefaultController
     public function indexAction(Request $request)
     {
         $this->log->notice('Default:index action');
-        
+
         $error = '';
         $posted = false;
+        $name = '';
 
         if ($request->getMethod() === 'POST') {
 
@@ -40,10 +47,10 @@ class DefaultController
             }
         }
 
-        ob_start();
-        require '../app/Resources/views/index.html.php';
-        $content = ob_get_clean();
-
-        return new Response($content);
+        return $this->view->response('index.html.php', [
+            'posted' => $posted,
+            'error' => $error,
+            'name' => $name
+        ]);
     }
 }
