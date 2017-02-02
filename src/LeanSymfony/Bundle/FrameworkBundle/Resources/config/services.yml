@@ -24,7 +24,7 @@ services:
     arguments: ['@lean.logger']
 
   lean.controller_resolver:
-    class: Symfony\Component\HttpKernel\Controller\ControllerResolver
+    class: LeanSymfony\Bundle\FrameworkBundle\Controller\ControllerResolver
     arguments: ['@lean.logger']
 
   lean.request_stack:
