@@ -34,7 +34,7 @@ services:
 
   lean.event_dispatcher:
     class: LeanSymfony\Component\EventDispatcher\EventDispatcher
-    arguments: ['@lean.logger']
+    arguments: ['@service_container','@lean.logger']
 
   lean.controller_resolver:
     class: LeanSymfony\Bundle\FrameworkBundle\Controller\ControllerResolver
@@ -68,7 +68,15 @@ services:
   # Routing related services
   lean.router:
     class: Symfony\Component\Routing\Router
+    arguments: ['@lean.routing_loader','routing.yml']
   lean.routing_subscriber:
     class: LeanSymfony\Bundle\FrameworkBundle\EventListener\RouterListener
+    arguments: ['@lean.router','@lean.request_stack']
     tags:
         - { name: kernel.event_subscriber }
+  lean.routing_locator:
+    class: Symfony\Component\Config\FileLocator
+    arguments: [['%kernel.root_dir%/Resources/config']]
+  lean.routing_loader:
+    class: Symfony\Component\Routing\Loader\YamlFileLoader
+    arguments: ['@lean.routing_locator']
