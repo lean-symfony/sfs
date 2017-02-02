@@ -23,6 +23,7 @@
         "monolog/monolog": "^1.22",
         "symfony/config": "^3.2",
         "symfony/dependency-injection": "^3.2",
-        "symfony/yaml": "^3.2"
+        "symfony/yaml": "^3.2",
+        "php-di/php-di": "^5.4"
     }
 }

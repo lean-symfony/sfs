@@ -10,6 +10,13 @@ services:
       - '@lean.argument_resolver'
 
   # Lean Symfony Framework Services
+  lean.container_factory:
+    class: LeanSymfony\Bundle\FrameworkBundle\Container\DIContainerFactory
+
+  lean.container:
+      class:   DI\Container
+      factory: 'lean.container_factory:createDIContainer'
+
   lean.logger.console_handler:
     class: Monolog\Handler\BrowserConsoleHandler
 
@@ -25,7 +32,7 @@ services:
 
   lean.controller_resolver:
     class: LeanSymfony\Bundle\FrameworkBundle\Controller\ControllerResolver
-    arguments: ['@lean.logger']
+    arguments: ['@lean.container','@lean.logger']
 
   lean.request_stack:
     class: Symfony\Component\HttpFoundation\RequestStack
