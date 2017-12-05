@@ -7,17 +7,17 @@
     <title>Symfony from Scratch</title>
 
     <link rel="stylesheet" href="/css/pure.css">
-    <link rel="stylesheet" href="/css/medium-grid.css">
+    <link rel="stylesheet" href="/css/grids-responsive.css">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div class="layout pure-g">
-    <div class="sidebar pure-u-1 pure-u-med-1-4">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
             <h1>Symfony from Scratch</h1>
         </div>
     </div>
-    <div class="content pure-u-1 pure-u-med-3-4">
+    <div class="content pure-u-1 pure-u-md-3-4">
         <div class="header">
             <h2>Symfony sagt Hallo</h2>
             <hr>
